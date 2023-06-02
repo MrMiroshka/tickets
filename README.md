@@ -20,3 +20,5 @@
 ### Доп. описание проекта в гуглдок - "https://docs.google.com/document/d/1iqhHiBo3JyPhG9f-COmObCvVXoDzIkDYWgeXgtJZ_fo/edit?usp=sharing"
 ### Канбан доска команды - "https://trello.com/b/BusC7tlZ/tickets"
 ### Продолжение следует
+
+
