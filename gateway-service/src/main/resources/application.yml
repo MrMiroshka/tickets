@@ -1,0 +1,44 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:2222"
+            allowedMethods:
+              - GET
+              - POST
+            allowedHeaders: "*"
+      routes:
+        - id: core-service
+          uri: http://localhost:8888
+          predicates:
+            - Path=/core/**
+          filters:
+            - StripPrefix=1 # удалить core из url
+            - PrefixPath=/tickets
+            - JwtAuthFilter
+        - id: ticket-service
+          uri: http://localhost:8889
+          predicates:
+            - Path=/ticket/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/tickets-ticket
+            - JwtAuthFilter
+        - id: auth-service
+          uri: http://localhost:8887
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/tickets-auth
+            - JwtAuthFilter
+
+jwt:
+  secret: ag%$45wqag$%asdf@4!q1F$qefw1asdfFFFEaFa23af4t5Gstdretfq2gsdfg$fafda
