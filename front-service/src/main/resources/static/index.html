@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>Задачник</title>
+</head>
+<body>
+<div class="container" ng-controller="myController">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Главная</a>
+                </li>
+                <li class="nav-item" ng-show="!isUserLoggedIn()">
+                    <form class="align-middle" ng-submit="tryToAuth()">
+                        <div class="input-group input-group-sm" style="...">
+                            <input id="navLoginField" class="form-control" ng-model="user.username" type="text"
+                                   aria-describedby="inputGroup-sizing-sm" style="...">
+
+                            <input id="navPasswordField" class="form-control" ng-model="user.password" type="password"
+                                   aria-describedby="inputGroup-sizing-sm" style="...">
+                            <button id="navLoginSubmit" class="btn btn-outline-warning btn-sm"
+                                    style="..." type="submit">Войти
+                            </button>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item" ng-show="isUserLoggedIn()" style="...">
+                    <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <h3>Товары</h3>
+    <div class="row align-items-start">
+        <div class="col" >
+            <li class="nav-item" ng-show="isUserLoggedIn()">
+                <form class="align-middle" ng-submit="createTask()">
+                        <div class="mb-3">
+                            <label for="newTaskTitle" class="form-label"  >Новая задача</label>
+                        <input id="newTaskTitle" class="form-control" ng-model="task.title" type="text"
+                               aria-describedby="inputGroup-sizing-sm" style="...">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="newTaskComment" class="form-label">Описание</label>
+                        <textarea class="form-control" id="newTaskComment" rows="3" ng-model="task.comment"></textarea>
+                    </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Приоритет</label>
+                            <select class="form-select" id="inputGroupSelect01" ng-model="task.priority">
+                                <option selected>Выбрать...</option>
+                                <option value="Низкий">Низкий</option>
+                                <option value="Средний">Средний</option>
+                                <option value="Высокий">Высокий</option>
+                                <option value="Критичный">Критичный</option>
+                            </select>
+                        </div>
+                        <button id="newTaskSubmit" class="btn btn-outline-warning btn-sm"
+                                style="..." type="submit">Создать
+                        </button>
+                </form>
+            </li>
+        </div>
+        <div class="col">
+    <table class="table table-hover" cellpadding="0" cellspacing="0">
+        <thead class="bg-success p-2 text-dark bg-opacity-50">
+        <tr>
+            <td>ID</td>
+            <td>Название</td>
+            <td>Описание</td>
+            <td>Статус</td>
+            <td>Приоритет</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="s in taskList">
+            <td>{{s.id}}</td>
+            <td>{{s.title}}</td>
+            <td><div class="box" >
+                {{s.comment}}
+            </div></td>
+            <td class="status"> <div class="input-group-status">
+                <select class="form-select" id="inputGroupStatus">
+                    <option selected>{{s.status}}</option>
+                    <option value="1" >Принята к исполнению</option>
+                    <option value="2">Выполнена</option>
+                    <option value="3">Отменена</option>
+                </select>
+            </div></td>
+            <td>{{s.priority}}</td>
+        </tr>
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
