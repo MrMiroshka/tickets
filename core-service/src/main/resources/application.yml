@@ -14,9 +14,9 @@ spring:
       hibernate:
         dialect:
 
-#integrations:
-#  ???-service:
-#    url: http://localhost:8889/tickets-???/
-#    read-timeout: 10000
-#    write-timeout: 7000
-#    connect-timeout: 7000
+integrations:
+  ???-service:
+    url: http://localhost:8889/tickets-???/
+    read-timeout: 10000
+    write-timeout: 7000
+    connect-timeout: 7000

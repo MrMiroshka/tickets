@@ -16,7 +16,7 @@ spring:
 
 integrations:
   core-service:
-    url: http://localhost:8888// #идет в core-service
+    url: http://localhost:8889//
     read-timeout: 10000
     write-timeout: 7000
     connect-timeout: 7000
