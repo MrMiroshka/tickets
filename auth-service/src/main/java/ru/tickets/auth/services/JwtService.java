@@ -1,8 +1,9 @@
-package ru.tickets.core.services;
+package ru.tickets.auth.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,16 +17,17 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtService {
-
-    private String secret = "mcdmcdsIIOFEBfejbfjsdfsefBBBEFB";
-    private Long expirationToken = (long) 8.64e+7;
+    @Value("${jwt.secret}")
+    private String secret;
+    @Value("${jwt.lifetime}")
+    private Long expirationToken;
 
     public String generateJwtToken(UserDetails user){
         String username = user.getUsername();
         List<String> authorities = user.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .toList();
         Map<String, Object> claims = new HashMap<>(Map.of("authority", authorities));
 
         return Jwts.builder()
@@ -37,6 +39,9 @@ public class JwtService {
                 .compact();
     }
 
+
+    /**FIXME Перенести в GateWay */
+
     public String getUsername(String token) {
         return parser(token).getSubject();
     }
@@ -44,7 +49,7 @@ public class JwtService {
     public List<GrantedAuthority> getAuthority(String token) {
         Claims parserClaims = parser(token);
         List<String> authority = (List<String>) parserClaims.get("authority");
-        List<SimpleGrantedAuthority> authority1 = authority.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        List<SimpleGrantedAuthority> authority1 = authority.stream().map(SimpleGrantedAuthority::new).toList();
         return authority1.stream()
                 .map(it -> (GrantedAuthority) it)
                 .collect(Collectors.toList());

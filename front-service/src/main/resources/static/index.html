@@ -50,20 +50,20 @@
     <div class="row align-items-start">
         <div class="col" >
             <li class="nav-item" ng-show="isUserLoggedIn()">
-                <form class="align-middle" ng-submit="createTask()">
+                <form class="align-middle" ng-submit="createTicket()">
                         <div class="mb-3">
-                            <label for="newTaskTitle" class="form-label"  >Новая задача</label>
-                        <input id="newTaskTitle" class="form-control" ng-model="task.title" type="text"
+                            <label for="newTicketTitle" class="form-label"  >Новая задача</label>
+                        <input id="newTicketTitle" class="form-control" ng-model="ticket.title" type="text"
                                aria-describedby="inputGroup-sizing-sm" style="...">
                     </div>
 
                     <div class="mb-3">
-                        <label for="newTaskComment" class="form-label">Описание</label>
-                        <textarea class="form-control" id="newTaskComment" rows="3" ng-model="task.comment"></textarea>
+                        <label for="newTicketComment" class="form-label">Описание</label>
+                        <textarea class="form-control" id="newTicketComment" rows="3" ng-model="ticket.comment"></textarea>
                     </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Приоритет</label>
-                            <select class="form-select" id="inputGroupSelect01" ng-model="task.priority">
+                            <select class="form-select" id="inputGroupSelect01" ng-model="ticket.priority">
                                 <option selected>Выбрать...</option>
                                 <option value="Низкий">Низкий</option>
                                 <option value="Средний">Средний</option>
@@ -71,7 +71,7 @@
                                 <option value="Критичный">Критичный</option>
                             </select>
                         </div>
-                        <button id="newTaskSubmit" class="btn btn-outline-warning btn-sm"
+                        <button id="newTicketSubmit" class="btn btn-outline-warning btn-sm"
                                 style="..." type="submit">Создать
                         </button>
                 </form>
@@ -89,7 +89,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="s in taskList">
+        <tr ng-repeat="s in ticketList">
             <td>{{s.id}}</td>
             <td>{{s.title}}</td>
             <td><div class="box" >

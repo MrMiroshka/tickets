@@ -1,4 +1,4 @@
-package ru.tickets.core.configs;
+package ru.tickets.auth.configs;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

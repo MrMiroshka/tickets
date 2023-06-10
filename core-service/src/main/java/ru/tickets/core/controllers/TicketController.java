@@ -4,10 +4,11 @@ package ru.tickets.core.controllers;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.circledevs.tasks.dto.ResourceNotFoundExceptions;
-import ru.circledevs.tasks.dto.TaskDto;
-import ru.circledevs.tasks.entities.Task;
-import ru.circledevs.tasks.services.TaskService;
+
+import ru.gb.ticket.api.ResourceNotFoundExceptions;
+import ru.gb.ticket.api.TicketDto;
+import ru.tickets.core.entities.Ticket;
+import ru.tickets.core.services.TicketService;
 
 
 import java.util.List;
@@ -17,15 +18,15 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin("*")
-@RequestMapping("/task")
-public class TaskController {
-    private final TaskService taskService;
+@RequestMapping("/ticket")
+public class TicketController {
+    private final TicketService ticketService;
 
     @GetMapping()
-    public List<TaskDto> getAllTasks(){
+    public List<TicketDto> getAllTasks(){
         log.info("Метод работает!");
-        return taskService.getAllTasks().stream().map(task -> new TaskDto(
+        // FIXME: 10.05.2023 Сделать мапперы
+        return ticketService.getAllTasks().stream().map(task -> new TicketDto(
                 task.getId(),
                 task.getTitle(),
                 task.getComment(),
@@ -34,10 +35,10 @@ public class TaskController {
                 .collect(Collectors.toList());
     }
     @GetMapping("/{id}")
-    public TaskDto findById(@PathVariable Long id){
-        Task task = taskService.findById(id).orElseThrow(
+    public TicketDto findById(@PathVariable Long id){
+        Ticket task = ticketService.findById(id).orElseThrow(
                 () -> new ResourceNotFoundExceptions("Продукт не найден, id:" + id));
-        return new TaskDto(task.getId(),
+        return new TicketDto(task.getId(),
                 task.getTitle(),
                 task.getComment(),
                 task.getStatus(),
@@ -45,7 +46,7 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public void create(@RequestBody TaskDto taskDto){
-        taskService.createTask(taskDto);
+    public void create(@RequestBody TicketDto taskDto){
+        ticketService.createTask(taskDto);
     }
 }

@@ -1,16 +1,17 @@
-package ru.gb.storage.api;
+package ru.gb.ticket.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDto {
+public class RoleDto {
+
     private Long id;
     private String title;
-    private String comment;
-    private String status;
-    private String priority;
+
+
 }

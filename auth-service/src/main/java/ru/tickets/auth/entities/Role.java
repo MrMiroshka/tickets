@@ -1,7 +1,9 @@
-package ru.tickets.core.entities;
+package ru.tickets.auth.entities;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -10,9 +12,9 @@ import lombok.Data;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_roles")
     private Long id;
-    private String title;
+    private String nameRoles;
 
 
 }

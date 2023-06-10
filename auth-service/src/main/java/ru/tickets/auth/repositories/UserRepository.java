@@ -1,8 +1,8 @@
-package ru.tickets.core.repositories;
+package ru.tickets.auth.repositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.circledevs.tasks.entities.User;
+import ru.tickets.auth.entities.User;
 
 import java.util.Optional;
 

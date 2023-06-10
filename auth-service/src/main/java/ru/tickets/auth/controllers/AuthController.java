@@ -1,4 +1,4 @@
-package ru.tickets.core.controllers;
+package ru.tickets.auth.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import ru.circledevs.tasks.dto.AuthRequest;
-import ru.circledevs.tasks.dto.AuthResponse;
-import ru.circledevs.tasks.services.JwtService;
+import ru.gb.ticket.api.AuthRequest;
+import ru.gb.ticket.api.AuthResponse;
+import ru.tickets.auth.services.JwtService;
 
 
 @RestController
@@ -38,7 +38,7 @@ public class AuthController {
             Authentication authenticate = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())); // проверка на валидность данных
 
-            // FIXME: 19.04.2023 Сгенерировать токен и отдать клиенту
+
             String jwtToken = jwtService.generateJwtToken((UserDetails) authenticate.getPrincipal());
             return new AuthResponse(jwtToken);
         }catch (AuthenticationException e){

@@ -1,25 +1,19 @@
-package ru.tickets.core.services;
+package ru.tickets.auth.services;
 
 
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.circledevs.tasks.dto.ResourceNotFoundExceptions;
-import ru.circledevs.tasks.dto.RoleDto;
-import ru.circledevs.tasks.dto.TaskDto;
-import ru.circledevs.tasks.dto.UserDto;
-import ru.circledevs.tasks.entities.Role;
-import ru.circledevs.tasks.entities.User;
-import ru.circledevs.tasks.repositories.UserRepository;
 
+import ru.tickets.auth.entities.Role;
+import ru.tickets.auth.entities.User;
+import ru.tickets.auth.repositories.UserRepository;
 
 import java.util.ArrayList;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -57,10 +51,11 @@ public class UserService implements UserDetailsService {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getTitle())).collect(Collectors.toList());
     }
 
-    public List<TaskDto> findAllTaskByUserId(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExceptions(String.format("User with id '%s' not found", id)));
-        List<TaskDto> tasksDtoList = new ArrayList<>();
+    public List<User> findAllUsers(){
+        return userRepository.findAll();
+    }
 
-        return tasksDtoList;
+    public Optional<User> findUserById(Long id){
+        return userRepository.findById(id);
     }
 }

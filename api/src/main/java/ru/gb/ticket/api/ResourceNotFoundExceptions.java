@@ -1,4 +1,4 @@
-package ru.gb.storage.api;
+package ru.gb.ticket.api;
 
 public class ResourceNotFoundExceptions extends RuntimeException{
     public ResourceNotFoundExceptions(String message) {
