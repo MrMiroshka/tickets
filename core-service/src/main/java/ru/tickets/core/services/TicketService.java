@@ -23,12 +23,14 @@ public class TicketService {
         return ticketRepository.findById(id);
     }
 
-    public void createTask(TicketDto taskDto) {
-        Ticket task = new Ticket(
-                taskDto.getTitle(),
-                taskDto.getComment(),
-                "Запланирована",
-                taskDto.getPriority());
-        ticketRepository.save(task);
+
+    //FIXME: 12.06.23 доработать с интеграцией новых сервисов
+    public void createTicket(TicketDto ticketDto) {
+        Ticket ticket = new Ticket(
+                ticketDto.getNameTicket(),
+                ticketDto.getTextTicket(),
+                1, //"Запланирована"
+                ticketDto.getPriorityTicket());
+        ticketRepository.save(ticket);
     }
 }

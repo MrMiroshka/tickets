@@ -7,6 +7,6 @@ import java.util.List;
 
 public class RoleMapper {
     public static List<RoleDto> rolesDtoFromRoles(List<Role> roles){
-        return roles.stream().map(role -> new RoleDto(role.getId(),role.getTitle())).toList();
+        return roles.stream().map(role -> new RoleDto(role.getId(),role.getNameRoles())).toList();
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import ru.gb.ticket.api.ResourceNotFoundExceptions;
 import ru.gb.ticket.api.TicketDto;
+import ru.tickets.core.converters.TicketMapper;
 import ru.tickets.core.entities.Ticket;
 import ru.tickets.core.services.TicketService;
 
@@ -25,28 +26,17 @@ public class TicketController {
     @GetMapping()
     public List<TicketDto> getAllTasks(){
         log.info("Метод работает!");
-        // FIXME: 10.05.2023 Сделать мапперы
-        return ticketService.getAllTasks().stream().map(task -> new TicketDto(
-                task.getId(),
-                task.getTitle(),
-                task.getComment(),
-                task.getStatus(),
-                task.getPriority()))
-                .collect(Collectors.toList());
+        return TicketMapper.ticketDtoListFromTicketList(ticketService.getAllTasks());
     }
     @GetMapping("/{id}")
     public TicketDto findById(@PathVariable Long id){
-        Ticket task = ticketService.findById(id).orElseThrow(
+        Ticket ticket = ticketService.findById(id).orElseThrow(
                 () -> new ResourceNotFoundExceptions("Продукт не найден, id:" + id));
-        return new TicketDto(task.getId(),
-                task.getTitle(),
-                task.getComment(),
-                task.getStatus(),
-                task.getPriority());
+        return TicketMapper.ticketDtoFromTicket(ticket);
     }
 
     @PostMapping("/create")
-    public void create(@RequestBody TicketDto taskDto){
-        ticketService.createTask(taskDto);
+    public void create(@RequestBody TicketDto ticketDto){
+        ticketService.createTicket(ticketDto);
     }
 }

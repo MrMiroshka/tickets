@@ -25,7 +25,7 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public Optional<User> findByUsername(String name) {
-        return userRepository.findByName(name);
+        return userRepository.findByUsername(name);
 
     }
     @Transactional
@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService {
         List<User> allUsers = userRepository.findAll();
         List<UserDetails> usersDetails = new ArrayList<>();
         for(User user: allUsers){
-            UserDetails users = new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+            UserDetails users = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
             usersDetails.add(users);
         }
         return usersDetails;
@@ -44,11 +44,11 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format("User '%s' not found",username)));
-        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection<SimpleGrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getTitle())).collect(Collectors.toList());
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNameRoles())).collect(Collectors.toList());
     }
 
     public List<User> findAllUsers(){

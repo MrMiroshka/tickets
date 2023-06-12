@@ -31,4 +31,10 @@ public class StandardAuthenticationProvider extends AbstractUserDetailsAuthentic
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         return userDetailsService.loadUserByUsername(username);
     }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return authentication.equals(UsernamePasswordAuthenticationToken.class);
+    }
+
 }

@@ -2,8 +2,8 @@ package ru.tickets.core.repositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.circledevs.tasks.entities.Task;
+import ru.tickets.core.entities.Ticket;
 
-public interface TicketRepository extends JpaRepository<Task, Long> {
+public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
 }

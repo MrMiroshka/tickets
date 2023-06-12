@@ -43,4 +43,11 @@ public class Ticket {
         this.worker = worker;
         this.author = author;
     }
+
+    public Ticket(String nameTicket, String textTicket, int statusTicket, int priorityTicket) {
+        this.nameTicket = nameTicket;
+        this.textTicket = textTicket;
+        this.statusTicket = statusTicket;
+        this.priorityTicket = priorityTicket;
+    }
 }
