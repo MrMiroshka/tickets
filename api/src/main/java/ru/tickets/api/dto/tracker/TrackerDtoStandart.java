@@ -12,6 +12,8 @@ public class TrackerDtoStandart implements TrackerDto {
 
     private LocalDateTime updatedAt;
 
+
+
     public Long getId() {
         return id;
     }
@@ -37,7 +39,7 @@ public class TrackerDtoStandart implements TrackerDto {
     }
 
     public LocalDateTime getUpdatedAt() {
-        return this.getUpdatedAt();
+        return this.updatedAt;
     }
 
     public void setUpdatedAt(LocalDateTime localDateTime) {
@@ -49,6 +51,13 @@ public class TrackerDtoStandart implements TrackerDto {
         this.title = title;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public TrackerDtoStandart(String title,Long id) {
+        this.id = id;
+        this.title = title;
+        this.createdAt = null;
+        this.updatedAt = null;
     }
 
 }
