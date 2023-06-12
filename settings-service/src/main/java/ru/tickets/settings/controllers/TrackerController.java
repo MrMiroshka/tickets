@@ -60,8 +60,10 @@ public class TrackerController {
 
     /**
      * Изменяет трекер по его id
-     *
-     * @param trackerDto
+     * @param typeClient тип клиента (WEB,MOBILE)
+     * @param jsonTracker трекер в формате json
+     * @return Возвращаем измененный объект
+     * @throws JSONException
      */
     @PutMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -103,10 +105,8 @@ public class TrackerController {
             page = 1;
         }
 
-        Page<TrackerDto> d = this.trackerService.find(nameTracker, page, pageSize).map(
-                p -> trackerConverter.entityToDto(p)
-        );
-        return d;
+        return  trackerService.find(nameTracker,page,pageSize).map(p->trackerConverter.entityToDto(p));
+
     }
 
     /**
