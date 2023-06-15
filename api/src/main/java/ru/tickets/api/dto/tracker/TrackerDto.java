@@ -18,4 +18,6 @@ public interface TrackerDto {
     public LocalDateTime getUpdatedAt();
 
     public void setUpdatedAt(LocalDateTime localDateTime);
+
+    
 }
