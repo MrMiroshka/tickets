@@ -1,4 +1,4 @@
-package ru.gb.ticket.api;
+package ru.gb.ticket.api.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class RoleDto {
 
     private Long id;
-    private String title;
+    private String nameRoles;
 
 
 }

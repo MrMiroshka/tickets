@@ -1,4 +1,4 @@
-package ru.gb.ticket.api;
+package ru.gb.ticket.api.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDto {
 
     private Long id;
-    private String name;
+    private String username;
     private List<RoleDto> roles;
 
 }

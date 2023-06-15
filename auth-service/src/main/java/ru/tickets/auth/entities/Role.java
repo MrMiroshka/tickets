@@ -2,6 +2,7 @@ package ru.tickets.auth.entities;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "roles")
+@NoArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,5 +18,7 @@ public class Role {
     private Long id;
     private String nameRoles;
 
-
+    public Role(String nameRoles) {
+        this.nameRoles = nameRoles;
+    }
 }
