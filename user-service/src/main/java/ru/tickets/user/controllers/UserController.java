@@ -1,11 +1,13 @@
 package ru.tickets.user.controllers;
 
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import ru.gb.storage.api.ResourceNotFoundExceptions;
-import ru.gb.storage.api.UserDto;
+
+
+import ru.gb.storage.api.userservice.UserDto;
 import ru.tickets.user.converters.UserMapper;
 import ru.tickets.user.services.UserService;
 

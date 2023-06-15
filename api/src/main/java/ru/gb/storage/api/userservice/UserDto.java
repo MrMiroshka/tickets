@@ -1,4 +1,4 @@
-package ru.gb.storage.api;
+package ru.gb.storage.api.userservice;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +14,8 @@ public class UserDto {
 
     private Long id;
     private String name;
+    private String password;
+    private String email;
     private List<RoleDto> roles;
 
 }

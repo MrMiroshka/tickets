@@ -1,7 +1,8 @@
 package ru.tickets.user.converters;
 
 
-import ru.gb.storage.api.UserDto;
+
+import ru.gb.storage.api.userservice.UserDto;
 import ru.tickets.user.entities.User;
 
 import java.util.List;
