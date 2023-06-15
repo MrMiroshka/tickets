@@ -1,30 +1,35 @@
-package ru.tickets.core.configs;
+package ru.tickets.auth.configs;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.config.Customizer;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import ru.circledevs.tasks.filters.JwtRequestFilter;
-import ru.circledevs.tasks.services.UserService;
 
-import java.util.Arrays;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+
+
+import ru.tickets.auth.filters.JwtRequestFilter;
+import ru.tickets.auth.services.UserService;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -33,18 +38,34 @@ public class SecurityConfig {
     private final UserService userService;
     private final JwtRequestFilter filter;
 
+
+
+
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer(){
-        return web -> web.ignoring().requestMatchers("/auth");
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((authz) -> {
+                    try {
+                        authz
+                        .anyRequest().permitAll()
+                        .and()
+                        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        .and()
+                        .headers().frameOptions().disable()
+                        .and()
+                        .exceptionHandling()
+                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                })
+                .httpBasic(withDefaults());
+        return http.build();
     }
 
-
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.authorizeHttpRequests((authz) -> authz
-                .anyRequest().permitAll())
-                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -53,11 +74,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationProvider... authenticationProviders){
-        return new ProviderManager(authenticationProviders);
+    public AuthenticationManager authenticationManager(List<StandardAuthenticationProvider> authenticationProviders) {
+        List<AuthenticationProvider> providers = new ArrayList<>(authenticationProviders);
+        return new ProviderManager(providers);
     }
 
-    @Bean
+}
+  /*  @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
@@ -67,5 +90,5 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }
-}
+    }*/
+

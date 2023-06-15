@@ -2,20 +2,20 @@ angular.module('app', ['ngStorage']).controller('myController', function ($scope
     const contextPath = 'http://localhost:8899/app';
     // FIXME: 3.06.23 Изменить url
 
-    $scope.loadAllTasks = function (){
-        $http.get(contextPath + "/task")
+    $scope.loadAllTicket = function (){
+        $http.get(contextPath + "/ticket")
             .then(function (response){
-                $scope.taskList = response.data;
+                $scope.ticketList = response.data;
         });
 
     };
 
 
-    $scope.createTask = function (){
-        $http.post('http://localhost:8899/app/task/create', $scope.task)
+    $scope.createTicket = function (){
+        $http.post('http://localhost:8899/app/ticket/create', $scope.ticket)
             .then(function (response){
                 console.log("Все ОК");
-                $scope.loadAllTasks();
+                $scope.loadAllTicket();
             });
     }
 
@@ -73,6 +73,6 @@ angular.module('app', ['ngStorage']).controller('myController', function ($scope
 
 
 
-    $scope.loadAllTasks();
+    $scope.loadAllTicket();
 
 });

@@ -1,4 +1,4 @@
-package ru.tickets.core.configs;
+package ru.tickets.auth.configs;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,4 +31,10 @@ public class StandardAuthenticationProvider extends AbstractUserDetailsAuthentic
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         return userDetailsService.loadUserByUsername(username);
     }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return authentication.equals(UsernamePasswordAuthenticationToken.class);
+    }
+
 }
