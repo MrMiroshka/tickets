@@ -1,4 +1,4 @@
-package ru.gb.storage.api;
+package ru.tickets.api;
 
 import lombok.Value;
 
