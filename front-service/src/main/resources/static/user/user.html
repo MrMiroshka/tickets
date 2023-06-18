@@ -1,0 +1,54 @@
+<div id="UserList" class="headtextelem">
+  <div class="filter">
+    <form novalidate ng-submit="filterUser()" ; class="filter">
+      <p class="p-head"> Имя </p>
+      <input class="vvod" type="number" inputmode="decimal" id="UserName" step="any" ng-model="User.name"/>
+      <br>
+      <button type="submit" class="headbutton">Применить</button>
+
+    </form>
+    <button class="headbutton" ng-click="createUser()">Добавить пользователя</button>
+  </div>
+  <div class="filter">
+    <button class="headbutton" ng-click="findPage(-1)">PrevPage</button>
+    <input class="vvod" type="number" id="Page" value="1"/>
+    <button class="headbutton" ng-click="findPage(1)">NextPage</button>
+  </div>
+  <h1>Список пользователей</h1>
+  <table>
+    <tr>
+      <td>Наименование</td>
+      <td>Почта</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tbody>
+    <tr ng-repeat="user in userList">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>
+        <button ng-click="editUser(user.id)">Изменить</button>
+      </td>
+      <td>
+        <button ng-click="deleteUser(user.id)">Удалить</button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div id="FormEdit" class="divform">
+  <form novalidate ng-submit="saveUser()">
+    Имя  : <input class="vvod" type="text" id="UserNameEdit" placeholder="имя"
+                          ng-model="User.name"/>
+    <br>
+    Почта: <input class="vvod" type="number" inputmode="decimal" id="UserEmail" step="any"
+                 ng-model="User.email"/>
+    <br>
+    <button type="submit" class="button">Сохранить</button>
+    <button ng-click="loadUsers()" class="button">Вернуться к списку</button>
+
+  </form>
+</div>
