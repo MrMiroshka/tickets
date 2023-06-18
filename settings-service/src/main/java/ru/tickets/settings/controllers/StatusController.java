@@ -1,6 +1,7 @@
 package ru.tickets.settings.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/status")
 @RequiredArgsConstructor
+@Slf4j
 public class StatusController {
 
     private final StatusService statusService;
@@ -35,7 +37,7 @@ public class StatusController {
     @GetMapping("/{id}")
     public Optional<StatusDto> findStatusById(@PathVariable Long id) {
         Status status = statusService.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Такой трекер не найден  id =  " + id));
+                new ResourceNotFoundException("Такой статус не найден  id =  " + id));
         return Optional.ofNullable(statusConverter.entityToDto(status));
     }
 

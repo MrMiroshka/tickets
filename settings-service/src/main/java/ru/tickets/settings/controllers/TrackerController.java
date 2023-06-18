@@ -1,6 +1,7 @@
 package ru.tickets.settings.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/tracker")
 @RequiredArgsConstructor
+@Slf4j
 public class TrackerController {
     private final TrackerService trackerService;
     private final TrackerConverter trackerConverter;

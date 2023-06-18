@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class StatusDto {
+@AllArgsConstructor
+public class PriorityDto {
     private Long id;
     private String title;
+    private Short priorityValue;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
