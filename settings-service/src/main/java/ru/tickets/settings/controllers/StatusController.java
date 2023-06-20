@@ -2,7 +2,6 @@ package ru.tickets.settings.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +13,7 @@ import ru.tickets.settings.servicies.StatusService;
 import ru.tickets.settings.validators.StatusValidator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -115,5 +115,11 @@ public class StatusController {
         this.statusService.deleteById(id);
         //TODO: реализовать проверку - есть ли уже записи в этом трекере с таким статусом
         // и если таковые имеются запретить удаление
+    }
+
+
+    @GetMapping("/default")
+    public  Optional<StatusDto> getDefaultStatus(){
+        return Optional.ofNullable(statusConverter.entityToDto(statusService.findDefaultStatus()));
     }
 }

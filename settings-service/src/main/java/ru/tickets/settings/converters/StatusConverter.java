@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 @Component
 public class StatusConverter {
     public Status dtoToEntity(StatusDto statusDto) {
-        return new Status(statusDto.getId(), statusDto.getTitle(), LocalDateTime.now(), LocalDateTime.now());
+        return new Status(statusDto.getId(), statusDto.getTitle(), statusDto.getDefaultStatus(),LocalDateTime.now(), LocalDateTime.now());
     }
 
     public StatusDto entityToDto(Status status) {
-        return new StatusDto(status.getId(), status.getTitle(),status.getCreatedAt(),status.getUpdatedAt());
+        return new StatusDto(status.getId(), status.getTitle(),status.getDefaultStatus(),status.getCreatedAt(),status.getUpdatedAt());
     }
 
 }

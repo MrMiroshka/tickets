@@ -15,6 +15,7 @@ import ru.tickets.settings.repositories.specifications.StatusSpecifications;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -25,6 +26,21 @@ public class StatusService {
 
     public List<Status> findAll() {
         return statusDao.findAll();
+    }
+
+    public Status findDefaultStatus() {
+        Status status = null;
+        try {
+            status = statusDao.findAll().stream().filter((obj) -> {
+                return obj.getDefaultStatus().equals(Boolean.TRUE);
+            }).findFirst().get();
+        } catch (NoSuchElementException exp) {
+            List<String> errorStr = new ArrayList<>();
+            errorStr.add("Не установлен сатус по молчанию (который ставится при создании тикета)");
+            throw new ValidationException(errorStr);
+        }
+        
+        return status;
     }
 
     public Page<Status> find(String nameStatus, Integer page, Integer pageSize) {

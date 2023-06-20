@@ -22,7 +22,6 @@ import java.util.Optional;
 public class PriorityController {
     private final PriorityService priorityService;
     private final PriorityConverter priorityConverter;
-
     private final PriorityValidator priorityValidator;
 
 

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class StatusDto {
     private Long id;
     private String title;
+    private Boolean defaultStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

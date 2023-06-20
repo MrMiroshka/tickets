@@ -23,6 +23,9 @@ public class Status {
     @Column(name = "status_name")
     private String title;
 
+    @Column(name = "default_s")
+    private Boolean defaultStatus;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
