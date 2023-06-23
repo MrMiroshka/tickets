@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.gb.ticket.api.auth.UserDto;
+import ru.tickets.auth.converters.RoleMapper;
+import ru.tickets.auth.converters.UserMapper;
 import ru.tickets.auth.entities.Role;
 import ru.tickets.auth.entities.User;
 import ru.tickets.auth.repositories.UserRepository;
@@ -59,4 +62,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
+    public String create(String userDto) {
+        return "OK";
+    }
 }

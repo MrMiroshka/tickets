@@ -23,18 +23,18 @@ public class Ticket {
     private Long id;
     private String nameTicket;
     private String textTicket;
-    private int trackerTicket;
-    private int statusTicket;
-    private int priorityTicket;
-    private int worker;
-    private int author; // FIXME: 10.05.2023 В БД есть связи с User, но юзеры теперь в другом микросервисе
+    private Long trackerTicket;
+    private Long statusTicket;
+    private Long priorityTicket;
+    private Long worker;
+    private Long author; // FIXME: 10.05.2023 В БД есть связи с User, но юзеры теперь в другом микросервисе
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
 
-    public Ticket(String nameTicket, String textTicket, int trackerTicket, int statusTicket, int priorityTicket, int worker, int author) {
+    public Ticket(String nameTicket, String textTicket, Long trackerTicket, Long statusTicket, Long priorityTicket, Long worker, Long author) {
         this.nameTicket = nameTicket;
         this.textTicket = textTicket;
         this.trackerTicket = trackerTicket;
@@ -44,7 +44,7 @@ public class Ticket {
         this.author = author;
     }
 
-    public Ticket(String nameTicket, String textTicket, int statusTicket, int priorityTicket) {
+    public Ticket(String nameTicket, String textTicket, Long statusTicket, Long priorityTicket) {
         this.nameTicket = nameTicket;
         this.textTicket = textTicket;
         this.statusTicket = statusTicket;

@@ -11,9 +11,9 @@ public class TicketDto {
     private Long id;
     private String nameTicket;
     private String textTicket;
-    private int trackerTicket;
-    private int statusTicket;
-    private int priorityTicket;
-    private int worker;
-    private int author;
+    private Long trackerTicket;
+    private Long statusTicket;
+    private Long priorityTicket;
+    private Long worker;
+    private Long author;
 }

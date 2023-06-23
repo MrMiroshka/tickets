@@ -1,4 +1,4 @@
-package ru.tickets.api.exceptions;
+package ru.gb.ticket.api.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException{
     public ResourceNotFoundException(String message) {

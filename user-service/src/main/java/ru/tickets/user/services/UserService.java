@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import ru.tickets.user.entities.User;
 import ru.tickets.user.repositories.UserRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,5 +39,9 @@ public class UserService {
     }
     public static Specification<User> nameLike(String name){
         return ((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("username"),String.format("%%%s%%",name)));
+    }
+
+    public Optional<User> findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

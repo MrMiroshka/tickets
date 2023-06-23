@@ -7,16 +7,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.tickets.api.dto.tracker.TrackerDtoStandart;
-import ru.tickets.api.exceptions.ValidationException;
+import ru.gb.ticket.api.exceptions.ValidationException;
 import ru.tickets.settings.repositories.TrackerDao;
 import ru.tickets.settings.repositories.specifications.TrackerSpecifications;
 import ru.tickets.settings.data.Tracker;
-import ru.tickets.api.exceptions.ResourceNotFoundException;
+import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

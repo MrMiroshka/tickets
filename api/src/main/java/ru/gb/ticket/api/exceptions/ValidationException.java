@@ -1,4 +1,4 @@
-package ru.tickets.api.exceptions;
+package ru.gb.ticket.api.exceptions;
 
 import java.util.List;
 import java.util.stream.Collectors;

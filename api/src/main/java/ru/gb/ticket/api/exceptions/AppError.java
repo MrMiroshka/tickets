@@ -1,4 +1,4 @@
-package ru.gb.ticket.api;
+package ru.gb.ticket.api.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

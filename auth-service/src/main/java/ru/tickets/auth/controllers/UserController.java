@@ -2,9 +2,11 @@ package ru.tickets.auth.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.gb.ticket.api.ResourceNotFoundExceptions;
+
 import ru.gb.ticket.api.auth.UserDto;
+import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
 import ru.tickets.auth.converters.UserMapper;
+
 import ru.tickets.auth.services.UserService;
 
 
@@ -24,8 +26,13 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable Long id){
         return UserMapper.userDtoFromUser(userService.findUserById(id).orElseThrow(
-                () -> new ResourceNotFoundExceptions("Пользователь не найден id: " + id)));
+                () -> new ResourceNotFoundException("Пользователь не найден id: " + id)));
     }
 
+    /** Проверка **/
+    @PostMapping("/add")
+    public String createUser(@RequestHeader String username){
+        return userService.create(username);
+    }
 
 }

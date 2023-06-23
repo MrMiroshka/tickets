@@ -2,14 +2,12 @@ package ru.tickets.settings.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.tickets.api.dto.tracker.TrackerDto;
-import ru.tickets.api.dto.tracker.fabrica.TrackerDtoFactory;
-import ru.tickets.api.dto.tracker.fabrica.TrackerDtoType;
-import ru.tickets.api.exceptions.ResourceNotFoundException;
+import ru.gb.ticket.api.tracker.TrackerDto;
+import ru.gb.ticket.api.tracker.fabrica.TrackerDtoType;
+import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
 import ru.tickets.settings.converters.TrackerConverter;
 import ru.tickets.settings.data.Tracker;
 import ru.tickets.settings.servicies.TrackerService;

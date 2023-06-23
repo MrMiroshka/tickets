@@ -1,7 +1,7 @@
 package ru.tickets.user.converters;
 
 
-import ru.gb.storage.api.userservice.RoleDto;
+import ru.gb.ticket.api.userservice.RoleDto;
 import ru.tickets.user.entities.Role;
 
 import java.util.List;
