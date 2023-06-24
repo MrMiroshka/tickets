@@ -63,28 +63,6 @@ create table user_groups
     foreign key (group_id) references groups (id_group)
 );
 
-insert into roles (name_roles)
-values ('ROLE_USER'),
-       ('ROLE_ADMIN');
-
-insert into groups (id_group, name_group)
-values ('1','Tech_GB');
-
-insert into authority (name_authority)
-values ('OP_READ'),
-       ('OP_EDIT');
-
-insert into users (username, password, email)
-values ('user', '$2a$10$5KpQnigJwmRuya4JAE9Vz.YaO9MZ4QnZ48S8Ng33Ja7J0gtGq3DOS', 'test@yandex.ru');
-
-insert into user_groups(user_id, group_id)
-values (1, 1);
-
-insert into users_roles(user_id, role_id)
-values (1, 1);
-
-insert into users_authority(user_id, authority_id)
-values (1, 1);
 
 
 create table tracker
@@ -103,17 +81,13 @@ create table status
 (
     id_status       bigserial,
     status_name varchar(30) not null unique,
+	default_s BOOLEAN not null,
     created_at timestamp,
     updated_at timestamp,
     primary key (id_status)
 );
 
 
-insert into status (status_name)
-values ('Решена'),
-       ('В работе'),
-       ('Обратная связь'),
-       ('Открыта');
 
 
 create table priority
@@ -127,11 +101,6 @@ create table priority
 );
 
 
-insert into priority (priority_name,priority_value)
-values ('Незначительная проблема','100'),
-       ('Серьезная проблема','55'),
-       ('Критическая проблема','20'),
-       ('Общий вопрос','120');
 
 create table ticket
 (
@@ -205,3 +174,39 @@ CREATE TRIGGER ticket_bu_updated_at_set_now BEFORE UPDATE ON ticket FOR EACH ROW
 
 CREATE TRIGGER comment_bi_updated_at_set_now BEFORE INSERT ON comment FOR EACH ROW EXECUTE PROCEDURE updated_at_set_now();
 CREATE TRIGGER comment_bu_updated_at_set_now BEFORE UPDATE ON comment FOR EACH ROW EXECUTE PROCEDURE updated_at_set_now();
+
+insert into roles (name_roles)
+values ('ROLE_USER'),
+       ('ROLE_ADMIN');
+
+insert into groups (id_group, name_group)
+values ('1','Tech_GB');
+
+insert into authority (name_authority)
+values ('OP_READ'),
+       ('OP_EDIT');
+
+insert into users (username, password, email)
+values ('user', '$2a$10$5KpQnigJwmRuya4JAE9Vz.YaO9MZ4QnZ48S8Ng33Ja7J0gtGq3DOS', 'test@yandex.ru');
+
+insert into user_groups(user_id, group_id)
+values (1, 1);
+
+insert into users_roles(user_id, role_id)
+values (1, 1);
+
+insert into users_authority(user_id, authority_id)
+values (1, 1);
+
+insert into status (status_name,default_s)
+values ('Решена',FALSE),
+       ('В работе',FALSE),
+       ('Обратная связь',FALSE),
+       ('Открыта',TRUE);
+
+
+insert into priority (priority_name,priority_value)
+values ('Незначительная проблема','100'),
+       ('Серьезная проблема','55'),
+       ('Критическая проблема','20'),
+       ('Общий вопрос','120');
