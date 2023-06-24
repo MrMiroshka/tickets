@@ -4,10 +4,10 @@ package ru.tickets.user.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import ru.gb.storage.api.ResourceNotFoundExceptions;
+import ru.gb.ticket.api.ResourceNotFoundExceptions;
 
 
-import ru.gb.storage.api.userservice.UserDto;
+import ru.gb.ticket.api.userservice.UserDto;
 import ru.tickets.user.converters.UserMapper;
 import ru.tickets.user.services.UserService;
 
@@ -42,6 +42,6 @@ public class UserController {
     public Page<UserDto> users(@RequestParam(required = false) String name,
                                @RequestParam(defaultValue = "1") int page,
                                @RequestParam(defaultValue = "10") int size) {
-        return userService.findUsers(name, page, size).map(UserMapper::userDtoFromUser);
+        return userService.findUsers(name, page, size).map(UserMapper::userDtoFromUserSmall);
     }
 }

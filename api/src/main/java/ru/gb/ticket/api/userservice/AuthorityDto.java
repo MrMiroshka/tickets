@@ -1,21 +1,17 @@
-package ru.gb.storage.api.userservice;
+package ru.gb.ticket.api.userservice;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class AuthorityDto {
 
     private Long id;
     private String name;
-    private String password;
-    private String email;
-    private List<RoleDto> roles;
+
 
 }

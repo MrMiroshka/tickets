@@ -1,7 +1,7 @@
 package ru.tickets.user.converters;
 
 
-import ru.gb.storage.api.userservice.RoleDto;
+import ru.gb.ticket.api.userservice.RoleDto;
 import ru.tickets.user.entities.Role;
 
 import java.util.List;
@@ -12,6 +12,6 @@ public class RoleMapper {
     }
 
     public static List<Role> rolesFromRolesDto(List<RoleDto> roles){
-        return roles.stream().map(role -> new Role(role.getId(),role.getTitle())).toList();
+        return roles.stream().map(role -> new Role(role.getId(),role.getName())).toList();
     }
 }
