@@ -4,11 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
-import reactor.core.Disposable;
-import reactor.core.publisher.Flux;
-import ru.gb.ticket.api.TicketDto;
-import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
-import ru.gb.ticket.api.settings.CommentDto;
+import ru.tickets.api.core.TicketDto;
+import ru.tickets.api.exceptions.ResourceNotFoundException;
 import ru.tickets.core.entities.Ticket;
 import ru.tickets.core.integrations.SettingServiceIntegration;
 import ru.tickets.core.integrations.UserServiceIntegration;
@@ -16,7 +13,6 @@ import ru.tickets.core.repositories.TicketRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

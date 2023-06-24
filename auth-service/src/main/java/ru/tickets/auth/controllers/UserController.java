@@ -3,8 +3,8 @@ package ru.tickets.auth.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import ru.gb.ticket.api.auth.UserDto;
-import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
+import ru.tickets.api.auth.UserDto;
+import ru.tickets.api.exceptions.ResourceNotFoundException;
 import ru.tickets.auth.converters.UserMapper;
 
 import ru.tickets.auth.services.UserService;

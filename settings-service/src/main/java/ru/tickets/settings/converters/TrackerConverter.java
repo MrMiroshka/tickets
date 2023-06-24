@@ -3,10 +3,10 @@ package ru.tickets.settings.converters;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
-import ru.gb.ticket.api.tracker.TrackerDto;
-import ru.gb.ticket.api.tracker.TrackerDtoStandart;
-import ru.gb.ticket.api.tracker.fabrica.TrackerDtoFactory;
-import ru.gb.ticket.api.tracker.fabrica.TrackerDtoType;
+import ru.tickets.api.tracker.TrackerDto;
+import ru.tickets.api.tracker.TrackerDtoStandart;
+import ru.tickets.api.tracker.fabrica.TrackerDtoFactory;
+import ru.tickets.api.tracker.fabrica.TrackerDtoType;
 import ru.tickets.settings.data.Tracker;
 
 import java.time.LocalDateTime;

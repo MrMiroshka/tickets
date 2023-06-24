@@ -1,6 +1,6 @@
 package ru.tickets.auth.converters;
 
-import ru.gb.ticket.api.auth.UserDto;
+import ru.tickets.api.auth.UserDto;
 import ru.tickets.auth.entities.User;
 
 import java.util.List;

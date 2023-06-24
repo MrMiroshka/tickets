@@ -1,7 +1,7 @@
-package ru.gb.ticket.api.tracker.fabrica;
+package ru.tickets.api.tracker.fabrica;
 
-import ru.gb.ticket.api.tracker.TrackerDto;
-import ru.gb.ticket.api.tracker.TrackerDtoStandart;
+import ru.tickets.api.tracker.TrackerDto;
+import ru.tickets.api.tracker.TrackerDtoStandart;
 
 public class TrackerDtoFactory {
 

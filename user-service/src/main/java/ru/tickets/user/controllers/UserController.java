@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 
-import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
-import ru.gb.ticket.api.userservice.UserDto;
+import ru.tickets.api.exceptions.ResourceNotFoundException;
+import ru.tickets.api.userservice.UserDto;
 import ru.tickets.user.converters.UserMapper;
 import ru.tickets.user.services.UserService;
 

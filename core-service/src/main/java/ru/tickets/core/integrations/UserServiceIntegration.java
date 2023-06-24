@@ -3,10 +3,7 @@ package ru.tickets.core.integrations;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
-import ru.gb.ticket.api.settings.CommentDto;
-import ru.gb.ticket.api.settings.StatusDto;
-import ru.gb.ticket.api.userservice.UserDto;
+import ru.tickets.api.userservice.UserDto;
 
 
 @Component

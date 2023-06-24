@@ -1,4 +1,4 @@
-package ru.gb.ticket.api.settings;
+package ru.tickets.api.settings;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

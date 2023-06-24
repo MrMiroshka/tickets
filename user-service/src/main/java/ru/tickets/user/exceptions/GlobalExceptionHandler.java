@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
-import ru.gb.ticket.api.exceptions.AppError;
+import ru.tickets.api.exceptions.ResourceNotFoundException;
+import ru.tickets.api.exceptions.AppError;
 
 
 @ControllerAdvice

@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 
-import ru.gb.ticket.api.TicketDto;
-import ru.gb.ticket.api.exceptions.ResourceNotFoundException;
+import ru.tickets.api.core.TicketDto;
+import ru.tickets.api.exceptions.ResourceNotFoundException;
 import ru.tickets.core.converters.TicketMapper;
 import ru.tickets.core.entities.Ticket;
 import ru.tickets.core.services.TicketService;

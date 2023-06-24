@@ -1,6 +1,6 @@
 package ru.tickets.auth.converters;
 
-import ru.gb.ticket.api.auth.RoleDto;
+import ru.tickets.api.auth.RoleDto;
 import ru.tickets.auth.entities.Role;
 
 import java.util.List;

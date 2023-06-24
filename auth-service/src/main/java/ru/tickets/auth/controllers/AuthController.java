@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import ru.gb.ticket.api.AuthRequest;
-import ru.gb.ticket.api.AuthResponse;
+import ru.tickets.api.auth.AuthRequest;
+import ru.tickets.api.auth.AuthResponse;
 import ru.tickets.auth.services.JwtService;
 
 
