@@ -16,3 +16,22 @@ body{
         height: 100px;
         overflow: scroll;
     }
+
+ .hidden-description {
+     display: none;
+     margin-top: 10px;
+ }
+
+.show {
+    display: block;
+}
+
+.comment-input {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.comment-button {
+    margin-top: 5px;
+}
+

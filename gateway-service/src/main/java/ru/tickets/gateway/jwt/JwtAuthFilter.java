@@ -39,6 +39,10 @@ public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Co
                 populateRequestHeader(exchange,token);
             }
             else {
+                System.out.println("токен отсутствует путь " + request.getURI().getPath());
+                if (request.getURI().getPath().equals("/auth-service/auth")){
+                    return chain.filter(exchange);
+                }
                 return this.onError(exchange,"Токен отсутсвует", HttpStatus.UNAUTHORIZED);
             }
             return chain.filter(exchange);

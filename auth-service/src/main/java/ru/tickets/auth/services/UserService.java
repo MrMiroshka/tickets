@@ -59,4 +59,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
+    public String create(String userDto) {
+        return "OK";
+    }
 }

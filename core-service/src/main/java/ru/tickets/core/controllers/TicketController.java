@@ -5,15 +5,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import ru.gb.ticket.api.ResourceNotFoundExceptions;
-import ru.gb.ticket.api.TicketDto;
+
+import ru.tickets.api.core.TicketDto;
+import ru.tickets.api.exceptions.ResourceNotFoundException;
 import ru.tickets.core.converters.TicketMapper;
 import ru.tickets.core.entities.Ticket;
 import ru.tickets.core.services.TicketService;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 
 @RestController
@@ -31,12 +32,18 @@ public class TicketController {
     @GetMapping("/{id}")
     public TicketDto findById(@PathVariable Long id){
         Ticket ticket = ticketService.findById(id).orElseThrow(
-                () -> new ResourceNotFoundExceptions("Продукт не найден, id:" + id));
+                () -> new ResourceNotFoundException("Продукт не найден, id:" + id));
         return TicketMapper.ticketDtoFromTicket(ticket);
     }
 
     @PostMapping("/create")
-    public void create(@RequestBody TicketDto ticketDto){
-        ticketService.createTicket(ticketDto);
+    public void create(@RequestBody TicketDto ticketDto,  @RequestHeader String username){
+        ticketService.createTicket(ticketDto, username);
+    }
+
+    @PutMapping("/updateStatus/{ticketId}")
+    public void updateStatusInCreatedTicket(@PathVariable Long ticketId,@RequestBody Map<String, Long> statusIdMap){
+        Long statusId = statusIdMap.get("statusId");
+        ticketService.updateStatus(ticketId,statusId);
     }
 }

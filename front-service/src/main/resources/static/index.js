@@ -1,28 +1,65 @@
 angular.module('app', ['ngStorage']).controller('myController', function ($scope, $http, $localStorage) {
-    const contextPath = 'http://localhost:8899/app';
-    // FIXME: 3.06.23 Изменить url
+    const contextPath = 'http://localhost:5555';
+
 
     $scope.loadAllTicket = function (){
-        $http.get(contextPath + "/ticket")
+        $http.get(contextPath + "/core/ticket")
             .then(function (response){
                 $scope.ticketList = response.data;
         });
 
     };
+    $scope.loadPriorities = function() {
+        $http.get(contextPath + "/settings/api/v1/priority/findAll")
+            .then(function(response) {
+                $scope.priorities = response.data;
+            });
+    };
+    $scope.loadTrackers = function() {
+        $http.get(contextPath + "/settings/api/v1/tracker/findAll")
+            .then(function(response) {
+                $scope.priorities = response.data;
+            });
+    };
+    $scope.loadStatuses = function() {
+        $http.get(contextPath + "/settings/api/v1/status/findAll")
+            .then(function(response) {
+                $scope.priorities = response.data;
+            });
+    };
+
 
 
     $scope.createTicket = function (){
-        $http.post('http://localhost:8899/app/ticket/create', $scope.ticket)
+        $http.post(contextPath + "/core/ticket/create", $scope.ticket)
             .then(function (response){
                 console.log("Все ОК");
                 $scope.loadAllTicket();
             });
-    }
+    };
+
+    $scope.updateTicketStatus = function() {
+        // Получаем выбранный статус из модели
+        let selectedStatusId = $scope.ticket.statusTicket;
+
+        // Отправляем запрос на сервер для обновления статуса тикета
+        $http.put(contextPath + "/core/ticket/updateStatus/" + $scope.ticket.id, { statusId: selectedStatusId })
+            .then(function(response) {
+                // Обработка успешного обновления статуса
+                console.log("Статус тикета успешно обновлен");
+                $scope.loadAllTicket()
+            })
+            .catch(function(error) {
+                // Обработка ошибки при обновлении статуса
+                console.error("Ошибка при обновлении статуса тикета", error);
+            });
+    };
+
 
 
 
     $scope.tryToAuth = function () {
-        $http.post('http://localhost:8899/app/auth', $scope.user)
+        $http.post(contextPath + "/auth/auth", $scope.user)
             .then(function successCallback(response) {
                 if(response.data.token){
                     console.log(response.data.token)
@@ -73,6 +110,11 @@ angular.module('app', ['ngStorage']).controller('myController', function ($scope
 
 
 
+
     $scope.loadAllTicket();
+    // Загрузка списка приоритетов при инициализации контроллера
+    $scope.loadPriorities();
+    $scope.loadTrackers();
+    $scope.loadStatuses();
 
 });

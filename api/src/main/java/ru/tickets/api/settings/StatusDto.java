@@ -1,17 +1,14 @@
-package ru.tickets.api.dto;
+package ru.tickets.api.settings;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoleDto {
-
-    private Long id;
-    private String title;
-
+public class StatusDto {
+    private Long idStatus;
+    private String statusName;
 
 }

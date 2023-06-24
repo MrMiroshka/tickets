@@ -1,4 +1,4 @@
-package ru.tickets.api.dto.tracker;
+package ru.tickets.api.tracker;
 
 
 import java.time.LocalDateTime;

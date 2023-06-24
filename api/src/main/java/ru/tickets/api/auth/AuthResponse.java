@@ -1,4 +1,4 @@
-package ru.tickets.api;
+package ru.tickets.api.auth;
 
 import lombok.Value;
 

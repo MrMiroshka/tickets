@@ -1,6 +1,6 @@
 package ru.tickets.user.converters;
 
-import ru.gb.ticket.api.userservice.AuthorityDto;
+import ru.tickets.api.userservice.AuthorityDto;
 import ru.tickets.user.entities.Authority;
 
 import java.util.List;
