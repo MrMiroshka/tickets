@@ -1,7 +1,5 @@
 package ru.tickets.user.converters;
 
-
-
 import ru.tickets.api.userservice.UserDto;
 import ru.tickets.user.entities.User;
 
@@ -23,7 +21,6 @@ public class UserMapper {
                 user.getEmail(),
                 RoleMapper.rolesFromRolesDto(user.getRoles()),
                 AuthorityMapper.authorityFromAuthorityDto(user.getAuthorityDtos()));
-
     }
     public static UserDto userDtoFromUserSmall(User user){
         return new UserDto(

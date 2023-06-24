@@ -1,7 +1,5 @@
 package ru.tickets.user.converters;
 
-
-
 import ru.tickets.api.userservice.RoleDto;
 import ru.tickets.user.entities.Role;
 
