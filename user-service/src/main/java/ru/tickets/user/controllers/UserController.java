@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    public void setBasketService(UserService userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
@@ -48,4 +48,28 @@ public class UserController {
                                @RequestParam(defaultValue = "10") int size) {
         return userService.findUsers(name, page, size).map(UserMapper::userDtoFromUserSmall);
     }
+    @GetMapping("/addRole")
+    public void addUserRole(@RequestParam Long userId,
+                            @RequestParam Long roleId) {
+        userService.addUserRole(userId,roleId);
+    }
+
+    @GetMapping("/delRole")
+    public void delUserRole(@RequestParam Long userId,
+                            @RequestParam Long roleId) {
+        userService.delUserRole(userId,roleId);
+    }
+
+    @GetMapping("/addAuthority")
+    public void addUserAuthority(@RequestParam Long userId,
+                                 @RequestParam Long authorityId) {
+        userService.addUserAuthority(userId,authorityId);
+    }
+
+    @GetMapping("/delAuthority")
+    public void delUserAuthority(@RequestParam Long userId,
+                                 @RequestParam Long authorityId) {
+        userService.delUserAuthority(userId,authorityId);
+    }
+
 }

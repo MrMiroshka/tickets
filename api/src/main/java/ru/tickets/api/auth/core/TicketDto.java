@@ -1,4 +1,4 @@
-package ru.tickets.api.core;
+package ru.tickets.api.auth.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
