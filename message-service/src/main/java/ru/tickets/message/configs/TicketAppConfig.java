@@ -23,7 +23,7 @@ public class TicketAppConfig {
     private final TicketServiceIntegrationProperties ticketServiceIntegrationProperties;
 
     @Bean
-    public WebClient userServiceWebClient() {
+    public WebClient ticketServiceWebClient() {
         TcpClient tcpClient = TcpClient
                 .create()
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, ticketServiceIntegrationProperties.getConnectTimeout())
