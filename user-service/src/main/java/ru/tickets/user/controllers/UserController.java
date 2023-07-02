@@ -33,12 +33,12 @@ public class UserController {
     }
 
     @PostMapping("")
-    public UserDto ProductSave(@RequestBody UserDto userDto) {
+    public UserDto saveUser(@RequestBody UserDto userDto) {
         return UserMapper.userDtoFromUser(userService.saveUser(UserMapper.userFromUserDto(userDto)));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable long id) {
+    public void deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
     }
 
