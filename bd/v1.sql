@@ -127,7 +127,7 @@ create table comment
     id_comment       bigserial,
     author int not null,
     ticket_id bigint not null,
-    comment_id bigint,
+    comment_id bigint not null,
     text_comment varchar(2042) not null,
     created_at timestamp,
     updated_at timestamp,
