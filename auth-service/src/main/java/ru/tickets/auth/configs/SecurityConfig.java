@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -22,7 +23,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
 
-import ru.tickets.auth.filters.JwtRequestFilter;
+import org.springframework.web.bind.annotation.PostMapping;
 import ru.tickets.auth.services.UserService;
 
 
@@ -36,7 +37,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final UserService userService;
-    private final JwtRequestFilter filter;
 
 
 
@@ -47,10 +47,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authz) -> {
                     try {
                         authz
-                        .anyRequest().permitAll()
+                                .and()
+                                .csrf().disable()
+                                .cors().disable()
+                                .authorizeHttpRequests()
+                                .anyRequest().permitAll()
                         .and()
                         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                         .and()
+
                         .headers().frameOptions().disable()
                         .and()
                         .exceptionHandling()

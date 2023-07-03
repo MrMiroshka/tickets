@@ -14,9 +14,14 @@ spring:
   jackson:
     default-property-inclusion: non_absent
 
-#integrations:
-#  ???-service:
-#    url: http://localhost:8889/tickets-???/
-#    read-timeout: 10000
-#    write-timeout: 7000
-#    connect-timeout: 7000
+integrations:
+  setting-service:
+    url: http://localhost:8899/settings
+    read-timeout: 10000
+    write-timeout: 7000
+    connect-timeout: 7000
+  user-service:
+    url: http://localhost:8181/user-service
+    read-timeout: 10000
+    write-timeout: 7000
+    connect-timeout: 7000

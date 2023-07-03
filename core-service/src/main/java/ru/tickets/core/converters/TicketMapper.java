@@ -1,6 +1,6 @@
 package ru.tickets.core.converters;
 
-import ru.gb.ticket.api.TicketDto;
+import ru.tickets.api.auth.core.TicketDto;
 import ru.tickets.core.entities.Ticket;
 
 import java.util.List;
