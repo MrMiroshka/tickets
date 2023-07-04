@@ -18,13 +18,13 @@ angular.module('app', ['ngStorage']).controller('myController', function ($scope
     $scope.loadTrackers = function() {
         $http.get(contextPath + "/settings/api/v1/tracker/findAll")
             .then(function(response) {
-                $scope.priorities = response.data;
+                $scope.trackers = response.data;
             });
     };
     $scope.loadStatuses = function() {
         $http.get(contextPath + "/settings/api/v1/status/findAll")
             .then(function(response) {
-                $scope.priorities = response.data;
+                $scope.statuses = response.data;
             });
     };
 
@@ -41,7 +41,7 @@ angular.module('app', ['ngStorage']).controller('myController', function ($scope
     $scope.updateTicketStatus = function() {
         // Получаем выбранный статус из модели
         let selectedStatusId = $scope.ticket.statusTicket;
-
+        console.log(selectedStatusId)
         // Отправляем запрос на сервер для обновления статуса тикета
         $http.put(contextPath + "/core/ticket/updateStatus/" + $scope.ticket.id, { statusId: selectedStatusId })
             .then(function(response) {

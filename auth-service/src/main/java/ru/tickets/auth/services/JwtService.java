@@ -42,7 +42,6 @@ public class JwtService {
     }
 
 
-    /**FIXME Перенести в GateWay */
 
     public String getUsername(String token) {
         return parser(token).getSubject();
