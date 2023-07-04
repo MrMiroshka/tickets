@@ -15,7 +15,7 @@ public class UserServiceIntegration {
 
     public UserDto getUserByUsername(String username){
         return userServiceWebClient.get()
-                .uri("/user/" + username)
+                .uri("/user/get/" + username)
                 .retrieve()
                 .bodyToMono(UserDto.class)
                 .block();

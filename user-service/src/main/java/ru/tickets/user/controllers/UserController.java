@@ -21,13 +21,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable Long id){
+    public UserDto getUserById(@PathVariable Long id){
         return UserMapper.userDtoFromUser(userService.findUserById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Пользователь не найден id: " + id)));
     }
 
-    @GetMapping("/{username}")
-    public UserDto getUser(@PathVariable String username){
+    @GetMapping("/get/{username}")
+    public UserDto getUserByUsername(@PathVariable String username){
         return UserMapper.userDtoFromUser(userService.findUserByUsername(username).orElseThrow(
                 () -> new ResourceNotFoundException("Пользователь с именем " + username+ " не найден")));
     }

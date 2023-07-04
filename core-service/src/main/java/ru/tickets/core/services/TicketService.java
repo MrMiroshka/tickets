@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 import ru.tickets.api.core.TicketDto;
+import ru.tickets.api.dto.tracker.StatusDto;
 import ru.tickets.api.exceptions.ResourceNotFoundException;
+
 import ru.tickets.core.entities.Ticket;
 import ru.tickets.core.integrations.SettingServiceIntegration;
 import ru.tickets.core.integrations.UserServiceIntegration;
@@ -36,7 +38,7 @@ public class TicketService {
                 ticketDto.getNameTicket(),
                 ticketDto.getTextTicket(),
                 ticketDto.getTrackerTicket(),
-                settingServiceIntegration.getDefaultStatus().getIdStatus(), //"Запланирована"
+                settingServiceIntegration.getDefaultStatus().getId(),
                 ticketDto.getPriorityTicket(),
                 1L,
                 userServiceIntegration.getUserByUsername(username).getId());

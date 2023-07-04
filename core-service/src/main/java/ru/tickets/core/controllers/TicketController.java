@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 
 import ru.tickets.api.core.TicketDto;
+import ru.tickets.api.dto.tracker.StatusDto;
 import ru.tickets.api.exceptions.ResourceNotFoundException;
 import ru.tickets.core.converters.TicketMapper;
 import ru.tickets.core.entities.Ticket;
+import ru.tickets.core.integrations.SettingServiceIntegration;
 import ru.tickets.core.services.TicketService;
 
 
@@ -23,6 +25,7 @@ import java.util.Map;
 @RequestMapping("/ticket")
 public class TicketController {
     private final TicketService ticketService;
+    private final SettingServiceIntegration settingServiceIntegration;
 
     @GetMapping()
     public List<TicketDto> getAllTasks(){
