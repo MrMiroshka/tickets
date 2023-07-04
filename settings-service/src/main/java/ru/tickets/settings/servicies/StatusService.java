@@ -31,12 +31,10 @@ public class StatusService {
     public Status findDefaultStatus() {
         Status status = null;
         try {
-            status = statusDao.findAll().stream().filter((obj) -> {
-                return obj.getDefaultStatus().equals(Boolean.TRUE);
-            }).findFirst().get();
+            status = statusDao.findAll().stream().filter((obj) -> obj.getDefaultStatus().equals(Boolean.TRUE)).findFirst().get();
         } catch (NoSuchElementException exp) {
             List<String> errorStr = new ArrayList<>();
-            errorStr.add("Не установлен сатус по молчанию (который ставится при создании тикета)");
+            errorStr.add("Не установлен статус по умолчанию (который ставится при создании тикета)");
             throw new ValidationException(errorStr);
         }
         

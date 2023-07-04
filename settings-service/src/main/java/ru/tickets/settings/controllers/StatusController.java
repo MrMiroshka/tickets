@@ -119,7 +119,7 @@ public class StatusController {
 
 
     @GetMapping("/default")
-    public  Optional<StatusDto> getDefaultStatus(){
+    public Optional<StatusDto> getDefaultStatus(){
         return Optional.ofNullable(statusConverter.entityToDto(statusService.findDefaultStatus()));
     }
 }

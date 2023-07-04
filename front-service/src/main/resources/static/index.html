@@ -65,7 +65,7 @@
                         <label class="input-group-text" for="inputGroupSelect01">Приоритет</label>
                         <select class="form-select" id="inputGroupSelect01" ng-model="ticket.priorityTicket">
                             <option selected>Выбрать...</option>
-                            <option ng-repeat="priority in priorities" value="{{priority.id}}">{{priority.name}}</option>
+                            <option ng-repeat="priority in priorities" value="{{priority.id}}">{{priority.title}}</option>
                         </select>
                     </div>
                     <div class="input-group mb-3">
@@ -112,12 +112,19 @@
 
                     </td>
                     <td class="status">
+                        <form class="align-middle" ng-submit="updateTicketStatus()">
                         <div class="input-group-status">
-                            <select class="form-select" id="inputGroupStatus" ng-model="ticket.statusTicket" ng-change="updateTicketStatus()">
-                                <option selected>Выбрать...</option>
+                            <select class="form-select" id="inputGroupStatus" ng-model="ticket.statusTicket">
+                                <option selected value="">{{s.statusTicket}}</option>
                                 <option ng-repeat="status in statuses" value="{{status.id}}">{{status.title}}</option>
                             </select>
+                            <br>
+                            <button id="newStatusSubmit" class="btn btn-outline-warning btn-sm"
+                                    style="..." type="submit">Сменить статус
+                            </button>
+                            <br>
                         </div>
+                        </form>
                     </td>
                     <td>{{s.priorityTicket}}</td>
                 </tr>
