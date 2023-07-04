@@ -7,7 +7,6 @@ import org.json.JSONException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import ru.tickets.api.exceptions.ResourceNotFoundException;
 import ru.tickets.api.tracker.TrackerDto;
 import ru.tickets.api.tracker.fabrica.TrackerDtoType;

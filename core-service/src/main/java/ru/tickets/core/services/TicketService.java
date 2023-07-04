@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
-import ru.tickets.api.core.TicketDto;
-import ru.tickets.api.dto.tracker.StatusDto;
+import ru.tickets.api.auth.core.TicketDto;
 import ru.tickets.api.exceptions.ResourceNotFoundException;
 
 import ru.tickets.core.entities.Ticket;
