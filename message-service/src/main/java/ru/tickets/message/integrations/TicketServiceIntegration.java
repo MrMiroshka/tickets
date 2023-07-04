@@ -3,7 +3,7 @@ package ru.tickets.message.integrations;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import ru.tickets.api.core.TicketDto;
+import ru.tickets.api.auth.core.TicketDto;
 
 
 @Component
