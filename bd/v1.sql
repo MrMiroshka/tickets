@@ -187,6 +187,7 @@ values ('OP_READ'),
        ('OP_EDIT');
 
 insert into users (username, password, email)
+values ('default', '$2a$10$5KpQnigJwmRuya4JAE9Vz.YaO9MZ4QnZ48S8Ng33Ja7J0gtGq3DOS', 'default@yandex.ru');
 values ('user', '$2a$10$5KpQnigJwmRuya4JAE9Vz.YaO9MZ4QnZ48S8Ng33Ja7J0gtGq3DOS', 'test@yandex.ru');
 
 insert into user_groups(user_id, group_id)
